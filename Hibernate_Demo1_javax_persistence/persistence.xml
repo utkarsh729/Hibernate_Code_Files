@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+					  http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+ version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+ 
+ <persistence-unit name="golu" transaction-type="RESOURCE_LOCAL">  <!-- ye object hai ..jiska name golu hai 
+ hum isko use karenge and we can make more object with different name for different database-->
+  <provider>org.hibernate.ejb.HibernatePersistence</provider> 
+  <properties>
+	<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test" />
+	<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+	<property name="javax.persistence.jdbc.user" value="sa" />  <!-- database user name-->
+	<property name="javax.persistence.jdbc.password" value="" />  <!-- database password-->
+	<property name="hibernate.show_sql" value="true"/>
+	<property name="hibernate.format_sql" value="true"/>
+	<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>  <!-- database grammar-->
+	<property name="hibernate.hbm2ddl.auto" value="create" />  <!-- agar yaha create hai toh...agar table phele se present hoga
+	to usko delete kr denge aur naya table create hoga -->
+	
+	<!-- validate does not drop table
+	It does schema validation 
+		if true 
+			then no issue
+		if schema changes
+			throw exception-->
+			
+			<!-- update...no data loss. no strict if schema changes it changes the schema-->
+	<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+  </properties>
+ </persistence-unit>
+ 
+ <persistence-unit name="golu2" transaction-type="RESOURCE_LOCAL">  
+  <provider>org.hibernate.ejb.HibernatePersistence</provider> 
+  <properties>
+	<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test" />
+	<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+	<property name="javax.persistence.jdbc.user" value="sa" />  <!-- database user name-->
+	<property name="javax.persistence.jdbc.password" value="" />  <!-- database password-->
+	<property name="hibernate.show_sql" value="true"/>
+	<property name="hibernate.format_sql" value="true"/>
+	<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>  <!-- database grammar-->
+	<property name="hibernate.hbm2ddl.auto" value="update" /> 
+	<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+  </properties>
+ </persistence-unit>
+</persistence>
